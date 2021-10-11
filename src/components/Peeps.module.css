@@ -1,0 +1,52 @@
+.peeps {
+	max-width: 60rem;
+	width: 90%;
+	margin: 2rem auto;
+	animation: meals-appear 1s ease-out forwards;
+}
+
+.buttonPosition {
+	margin: auto;
+	margin-bottom: 2%;
+	text-align: center;
+	float: right;
+	display: flex;
+	justify-content: center;
+	display: grid;
+	border-radius: 47%;
+	padding: 20px;
+	font-size: 16px;
+	background-color: #06768a;
+	color: white;
+	font-family: Verdana, Tahoma, sans-serif;
+	font-size: large;
+	font-weight: bold;
+}
+
+.peeps ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.peepsError {
+	text-align: center;
+	color: red;
+}
+
+.peepsLoading {
+	text-align: center;
+	color: white;
+}
+
+@keyframes poems-appear {
+	from {
+		opacity: 0;
+		transform: translateY(3rem);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
