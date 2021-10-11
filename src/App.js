@@ -1,8 +1,13 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { Fragment } from "react";
+import Header from "./components/Header";
 
 function App() {
-	return <div className="App">Hello there</div>;
+	return (
+		<Fragment>
+			<Header />
+		</Fragment>
+	);
 }
 
 export default App;
