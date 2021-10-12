@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import classes from "./Peeps.module.css";
+import PeepItem from "./PeepItem";
 import Card from "./Card";
 
 const Peeps = () => {
@@ -14,7 +15,20 @@ const Peeps = () => {
 				);
 				console.log("hello there");
 				let loadedPeeps = response.data;
-				setPeeps(loadedPeeps);
+				console.log(loadedPeeps);
+
+				let flattened = loadedPeeps.map((peep) => {
+					return {
+						id: peep.id,
+						body: peep.body,
+						userHandle: peep.user.handle,
+						userID: peep.user.id,
+					};
+				});
+
+				console.log(flattened);
+
+				setPeeps(flattened);
 
 				console.log(peeps);
 			} catch (error) {
@@ -25,10 +39,24 @@ const Peeps = () => {
 		fetchPeeps();
 	}, []);
 
+	const peepList = peeps.map((peep) => {
+		return (
+			<PeepItem
+				id={peep.id}
+				key={peep.id}
+				body={peep.body}
+				author={peep.userHandle}
+				likes={peep.likes}
+			/>
+		);
+	});
+
+	console.log(peepList);
+
 	return (
 		<section className={classes.peeps}>
 			<Card>
-				<div>Here Goeth The Peeps</div>
+				<ul>{peepList}</ul>
 			</Card>
 		</section>
 	);
