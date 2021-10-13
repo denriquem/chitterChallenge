@@ -9,7 +9,7 @@ const AuthForm = () => {
 	const emailInputRef = useRef();
 	const passwordInputRef = useRef();
 
-	const [isLogin, setIsLogin] = useState(true);
+	const [isLogin, setIsLogin] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 
 	const authCtx = useContext(AuthContext);
@@ -30,9 +30,10 @@ const AuthForm = () => {
 
 		if (isLogin) {
 		} else {
+			console.log(enteredEmail);
 			url = "https://chitter-backend-api-v2.herokuapp.com/users";
 			data = {
-				users: {
+				user: {
 					handle: enteredEmail,
 					password: enteredPassword,
 				},
@@ -41,7 +42,7 @@ const AuthForm = () => {
 			const loginRequest = async () => {
 				try {
 					const response = await axios.post(url, data);
-					console.log(response);
+					console.log(response.data);
 				} catch (err) {
 					console.log(err);
 				}
@@ -56,6 +57,10 @@ const AuthForm = () => {
 			<h1>{isLogin ? "Login" : "Sign Up"}</h1>
 			<form onSubmit={submitHandler}>
 				<div className={classes.control}>
+					<label htmlFor="email">Your Handle</label>
+					<input type="email" id="email" required ref={emailInputRef}></input>
+				</div>
+				<div className={classes.control}>
 					<label htmlFor="password">Your Password</label>
 					<input
 						type="password"
@@ -64,11 +69,9 @@ const AuthForm = () => {
 						ref={passwordInputRef}
 					/>
 				</div>
+
 				<div className={classes.actions}>
-					{!isLoading && (
-						<button>{isLogin ? "Login" : "Create Account"}</button>
-					)}
-					{isLoading && <p>Loading...</p>}
+					<button>{isLogin ? "Login" : "Create Account"}</button>
 					<button
 						type="button"
 						className={classes.toggle}
