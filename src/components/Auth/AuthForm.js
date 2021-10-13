@@ -29,11 +29,10 @@ const AuthForm = () => {
 		let data;
 
 		if (isLogin) {
-		} else {
 			console.log(enteredEmail);
-			url = "https://chitter-backend-api-v2.herokuapp.com/users";
+			url = "https://chitter-backend-api-v2.herokuapp.com/sessions";
 			data = {
-				user: {
+				session: {
 					handle: enteredEmail,
 					password: enteredPassword,
 				},
@@ -49,6 +48,27 @@ const AuthForm = () => {
 			};
 
 			loginRequest();
+		} else {
+			console.log(enteredEmail);
+			url = "https://chitter-backend-api-v2.herokuapp.com/users";
+			data = {
+				user: {
+					handle: enteredEmail,
+					password: enteredPassword,
+				},
+			};
+
+			const signUpRequest = async () => {
+				try {
+					const response = await axios.post(url, data);
+					console.log(response.data);
+				} catch (err) {
+					console.log(err);
+				}
+			};
+
+			signUpRequest();
+			switchAuthModeHandler();
 		}
 	};
 
