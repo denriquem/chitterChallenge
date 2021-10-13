@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import classes from "./Peeps.module.css";
 import PeepItem from "./PeepItem";
-import Card from "./Card";
+import Card from "../UI/Card";
 
 const Peeps = () => {
 	const [peeps, setPeeps] = useState([]);
