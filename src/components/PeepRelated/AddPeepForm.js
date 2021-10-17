@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classes from "./AddPeepForm.module.css";
 
 const AddPeepForm = () => {
 	const [enteredPeep, setEnteredPeep] = useState("");
@@ -16,10 +17,15 @@ const AddPeepForm = () => {
 
 	return (
 		<form>
-			<div>
+			<div className={classes.control}>
 				<label htmlFor="pepp">The Peep</label>
 				<input type="text" id="peep" onChange={peepChangeHandler}></input>
-				<button type="submit" value="submit" onClick={submitHandler}></button>
+				<button
+					className={classes.button1}
+					type="submit"
+					value="submit"
+					onClick={submitHandler}
+				></button>
 			</div>
 		</form>
 	);

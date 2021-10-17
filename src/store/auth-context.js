@@ -2,14 +2,18 @@ import React, { useState } from "react";
 
 const AuthContext = React.createContext({
 	token: "",
+	peepID: "",
 	isLoggedIn: false,
 	login: (token) => {},
 	logout: () => {},
+	storePeepID: (peepID) => {},
 });
 
 export const AuthContextProvider = (props) => {
 	const initialToken = localStorage.getItem("token");
+	const initialPeepID = localStorage.getItem("peepID");
 	const [token, setToken] = useState(initialToken);
+	const [peepID, setPeepID] = useState(initialPeepID);
 
 	const userIsLoggedIn = !!token;
 
@@ -23,11 +27,18 @@ export const AuthContextProvider = (props) => {
 		localStorage.setItem("token", token);
 	};
 
+	const peepIdHanlder = (peepID) => {
+		setPeepID(peepID);
+		localStorage.setItem("peepID", peepID);
+	};
+
 	const contextValue = {
 		token: token,
+		peepID: peepID,
 		isLoggedIn: userIsLoggedIn,
 		login: logInHandler,
 		logout: logOutHandler,
+		storePeepID: peepIdHanlder,
 	};
 
 	return (
