@@ -1,9 +1,13 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useState, useContext, Fragment } from "react";
 import axios from "axios";
-import PeepItem from "../PeepRelated/PeepItem";
+import AuthContext from "../../store/auth-context";
 
-const Peep = (params) => {
-	const postID = params.id;
+const Peep = () => {
+	const authCtx = useContext(AuthContext);
+
+	console.log(authCtx);
+
+	const postID = authCtx.peepID;
 	const [peep, setPeep] = useState("");
 
 	useEffect(() => {
@@ -13,7 +17,8 @@ const Peep = (params) => {
 					`https://chitter-backend-api-v2.herokuapp.com/peeps/${postID}`
 				);
 				console.log(response);
-				setPeep(response.body);
+				console.log(response.data.body);
+				setPeep(response.data.body);
 			} catch (err) {
 				console.log(err);
 			}
@@ -22,7 +27,12 @@ const Peep = (params) => {
 		getPeep(postID);
 	});
 
-	return <Fragment></Fragment>;
+	return (
+		<Fragment>
+			<h1>Hello</h1>
+			<div>{peep}</div>
+		</Fragment>
+	);
 };
 
 export default Peep;

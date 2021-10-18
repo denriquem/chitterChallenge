@@ -1,16 +1,16 @@
 import { useState, useRef, useContext } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import classes from "./AuthForm.module.css";
 import axios from "axios";
 import AuthContext from "../../store/auth-context";
 
 const AuthForm = () => {
-	const history = useHistory();
+	// const history = useHistory();
 	const emailInputRef = useRef();
 	const passwordInputRef = useRef();
 
 	const [isLogin, setIsLogin] = useState(false);
-	const [isLoading, setIsLoading] = useState(true);
+	// const [isLoading, setIsLoading] = useState(true);
 
 	const authCtx = useContext(AuthContext);
 
@@ -24,7 +24,6 @@ const AuthForm = () => {
 		const enteredEmail = emailInputRef.current.value;
 		const enteredPassword = passwordInputRef.current.value;
 
-		setIsLoading(true);
 		let url;
 		let data;
 

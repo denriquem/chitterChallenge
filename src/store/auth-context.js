@@ -12,6 +12,7 @@ const AuthContext = React.createContext({
 export const AuthContextProvider = (props) => {
 	const initialToken = localStorage.getItem("token");
 	const initialPeepID = localStorage.getItem("peepID");
+
 	const [token, setToken] = useState(initialToken);
 	const [peepID, setPeepID] = useState(initialPeepID);
 
@@ -28,8 +29,11 @@ export const AuthContextProvider = (props) => {
 	};
 
 	const peepIdHanlder = (peepID) => {
-		setPeepID(peepID);
+		console.log("hello from the peep handler, on second thoughts...");
+		console.log(peepID);
 		localStorage.setItem("peepID", peepID);
+
+		setPeepID(peepID);
 	};
 
 	const contextValue = {
