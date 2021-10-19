@@ -17,8 +17,24 @@ const Peep = () => {
 				let response = await axios.get(
 					`https://chitter-backend-api-v2.herokuapp.com/peeps/${postID}`
 				);
-				setPeep(response.data);
+
+				// let flattened = response.data.map((peep) => {
+				// 	return {
+				// 		body: peep.body,
+				// 		handle: peep.user.handle,
+				// 		likes: peep.likes.length,
+				// 	};
+				// });
+
+				let newPeepObj = {
+					body: response.data.body,
+					handle: response.data.user.handle,
+					likes: response.data.likes.length,
+				};
+
+				setPeep(newPeepObj);
 				console.log(response.data);
+				console.log(newPeepObj);
 			} catch (err) {
 				console.log(err);
 			}
@@ -31,8 +47,8 @@ const Peep = () => {
 		<li className={classes.peep}>
 			<div>
 				<h3>{peep.body}</h3>
-				<h4>{peep.user.handle}</h4>
-				<h5>{`Likes: ${peep.likes.length}`}</h5>
+				<h4>{peep.handle}</h4>
+				<h5>{`Likes: ${peep.likes}`}</h5>
 			</div>
 		</li>
 	);
