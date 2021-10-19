@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext, Fragment } from "react";
 import axios from "axios";
 import AuthContext from "../../store/auth-context";
+import classes from "./Peep.module.css";
 
 const Peep = () => {
 	const authCtx = useContext(AuthContext);
@@ -16,22 +17,24 @@ const Peep = () => {
 				let response = await axios.get(
 					`https://chitter-backend-api-v2.herokuapp.com/peeps/${postID}`
 				);
-				console.log(response);
-				console.log(response.data.body);
-				setPeep(response.data.body);
+				setPeep(response.data);
+				console.log(response.data);
 			} catch (err) {
 				console.log(err);
 			}
 		};
 
 		getPeep(postID);
-	});
+	}, []);
 
 	return (
-		<Fragment>
-			<h1>Hello</h1>
-			<div>{peep}</div>
-		</Fragment>
+		<li className={classes.peep}>
+			<div>
+				<h3>{peep.body}</h3>
+				<h4>{peep.user.handle}</h4>
+				<h5>{`Likes: ${peep.likes.length}`}</h5>
+			</div>
+		</li>
 	);
 };
 

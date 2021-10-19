@@ -29,8 +29,6 @@ const Peeps = () => {
 				console.log(flattened);
 
 				setPeeps(flattened);
-
-				console.log(peeps);
 			} catch (error) {
 				console.log(error);
 			}
