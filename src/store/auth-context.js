@@ -13,10 +13,11 @@ export const AuthContextProvider = (props) => {
 	const initialToken = localStorage.getItem("token");
 	const initialPeepID = localStorage.getItem("peepID");
 
+	// const [loggedIn, setLoggedIn] = useState(false);
 	const [token, setToken] = useState(initialToken);
 	const [peepID, setPeepID] = useState(initialPeepID);
 
-	const userIsLoggedIn = !!token;
+	const loggedIn = !!token;
 
 	const logOutHandler = () => {
 		setToken(null);
@@ -25,6 +26,8 @@ export const AuthContextProvider = (props) => {
 
 	const logInHandler = (token) => {
 		setToken(token);
+		// setLoggedIn(true);
+		console.log(loggedIn);
 		localStorage.setItem("token", token);
 	};
 
@@ -39,7 +42,7 @@ export const AuthContextProvider = (props) => {
 	const contextValue = {
 		token: token,
 		peepID: peepID,
-		isLoggedIn: userIsLoggedIn,
+		isLoggedIn: loggedIn,
 		login: logInHandler,
 		logout: logOutHandler,
 		storePeepID: peepIdHanlder,

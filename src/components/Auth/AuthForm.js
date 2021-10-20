@@ -1,16 +1,15 @@
 import { useState, useRef, useContext } from "react";
-// import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import classes from "./AuthForm.module.css";
 import axios from "axios";
 import AuthContext from "../../store/auth-context";
 
 const AuthForm = () => {
-	// const history = useHistory();
 	const emailInputRef = useRef();
 	const passwordInputRef = useRef();
 
 	const [isLogin, setIsLogin] = useState(false);
-	// const [isLoading, setIsLoading] = useState(true);
+	const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
 
 	const authCtx = useContext(AuthContext);
 
@@ -42,6 +41,8 @@ const AuthForm = () => {
 					const response = await axios.post(url, data);
 					console.log(response.data);
 					authCtx.login(response.data.session_key);
+					console.log(authCtx.isLoggedIn);
+					setUserIsLoggedIn(true);
 				} catch (err) {
 					console.log(err);
 				}
@@ -71,6 +72,10 @@ const AuthForm = () => {
 			switchAuthModeHandler();
 		}
 	};
+
+	if (userIsLoggedIn) {
+		return <Redirect to="/" />;
+	}
 
 	return (
 		<section className={classes.auth}>

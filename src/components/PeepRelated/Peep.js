@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, Fragment } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import AuthContext from "../../store/auth-context";
 import classes from "./Peep.module.css";
@@ -17,14 +17,6 @@ const Peep = () => {
 				let response = await axios.get(
 					`https://chitter-backend-api-v2.herokuapp.com/peeps/${postID}`
 				);
-
-				// let flattened = response.data.map((peep) => {
-				// 	return {
-				// 		body: peep.body,
-				// 		handle: peep.user.handle,
-				// 		likes: peep.likes.length,
-				// 	};
-				// });
 
 				let newPeepObj = {
 					body: response.data.body,
