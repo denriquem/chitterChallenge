@@ -1,11 +1,6 @@
 import "./App.css";
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Redirect,
-} from "react-router-dom";
-import { Fragment, useContext, useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Fragment, useContext } from "react";
 import Header from "./components/UI/Header";
 import ChitterSummary from "./components/PeepRelated/ChitterSummary";
 import Peeps from "./components/PeepRelated/Peeps";
