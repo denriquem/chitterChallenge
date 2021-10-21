@@ -5,7 +5,7 @@ import {
 	Route,
 	Redirect,
 } from "react-router-dom";
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useState } from "react";
 import Header from "./components/UI/Header";
 import ChitterSummary from "./components/PeepRelated/ChitterSummary";
 import Peeps from "./components/PeepRelated/Peeps";
@@ -23,14 +23,13 @@ function App() {
 			<Router>
 				<Switch>
 					<Route path="/" exact>
-						(
 						<Fragment>
 							<Header />
 							<ChitterSummary />
 							<Peeps />
 						</Fragment>
-						){/* {!authCtx.isLoggedIn && <Redirect to="/auth" />} */}
 					</Route>
+
 					<Route path="/auth">
 						<AuthForm />
 					</Route>

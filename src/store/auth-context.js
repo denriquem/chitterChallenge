@@ -12,12 +12,12 @@ const AuthContext = React.createContext({
 export const AuthContextProvider = (props) => {
 	const initialToken = localStorage.getItem("token");
 	const initialPeepID = localStorage.getItem("peepID");
+	const initialLoggedIn = localStorage.getItem("loggedIn");
 
 	// const [loggedIn, setLoggedIn] = useState(false);
 	const [token, setToken] = useState(initialToken);
 	const [peepID, setPeepID] = useState(initialPeepID);
-
-	const loggedIn = !!token;
+	const [loggedIn, setLoggedIn] = useState(initialLoggedIn);
 
 	const logOutHandler = () => {
 		setToken(null);
@@ -26,9 +26,9 @@ export const AuthContextProvider = (props) => {
 
 	const logInHandler = (token) => {
 		setToken(token);
-		// setLoggedIn(true);
-		console.log(loggedIn);
 		localStorage.setItem("token", token);
+		setLoggedIn(true);
+		localStorage.setItem("loggedIn", loggedIn);
 	};
 
 	const peepIdHanlder = (peepID) => {
