@@ -4,7 +4,7 @@ import classes from "./Peeps.module.css";
 import PeepItem from "./PeepItem";
 import Card from "../UI/Card";
 
-const Peeps = () => {
+const Peeps = (props) => {
 	const [peeps, setPeeps] = useState([]);
 
 	useEffect(() => {
@@ -53,6 +53,9 @@ const Peeps = () => {
 
 	return (
 		<section className={classes.peeps}>
+			<button className={classes.buttonPosition} onClick={props.onShowAddPeep}>
+				Add Peep
+			</button>
 			<Card>
 				<ul>{peepList}</ul>
 			</Card>

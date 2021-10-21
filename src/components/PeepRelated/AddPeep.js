@@ -17,7 +17,10 @@ const AddPeep = (props) => {
 
 	return (
 		<Modal onClose={props.onClose}>
-			<AddPeepForm onCancel={props.onClose} onConfirm={}></AddPeepForm>
+			<AddPeepForm
+				onCancel={props.onClose}
+				onConfirm={submitPeepHandler}
+			></AddPeepForm>
 			{modalActions}
 		</Modal>
 	);
