@@ -40,7 +40,7 @@ const AuthForm = () => {
 				try {
 					const response = await axios.post(url, data);
 					console.log(response.data);
-					authCtx.login(response.data.session_key);
+					authCtx.login(response.data.session_key, response.data.user_id);
 					console.log(authCtx.isLoggedIn);
 					setUserIsLoggedIn(true);
 				} catch (err) {

@@ -4,10 +4,10 @@ const AuthContext = React.createContext({
 	token: "",
 	peepID: "",
 	isLoggedIn: false,
+	userID: "",
 	login: (token) => {},
 	logout: () => {},
 	storePeepID: (peepID) => {},
-	storeUserID: (userID) => {},
 });
 
 export const AuthContextProvider = (props) => {
@@ -28,13 +28,15 @@ export const AuthContextProvider = (props) => {
 		localStorage.removeItem(token);
 	};
 
-	const logInHandler = (token) => {
+	const logInHandler = (token, userID) => {
 		setToken(token);
+		setUserID(userID);
 		localStorage.setItem("token", token);
+		localStorage.setItem("userID", userID);
 		setLoggedIn(true);
 	};
 
-	const peepIdHanlder = (peepID) => {
+	const peepIdHandler = (peepID) => {
 		console.log("hello from the peep handler, on second thoughts...");
 		console.log(peepID);
 		localStorage.setItem("peepID", peepID);
@@ -42,20 +44,14 @@ export const AuthContextProvider = (props) => {
 		setPeepID(peepID);
 	};
 
-	const userIdHandler = (userID) => {
-		console.log("hello from userID Handler");
-		console.log(userID);
-		localStorage.setItem("userID", userID);
-		setUserID(userID);
-	};
-
 	const contextValue = {
 		token: token,
 		peepID: peepID,
+		userID: userID,
 		isLoggedIn: userIsLoggedIn,
 		login: logInHandler,
 		logout: logOutHandler,
-		storePeepID: peepIdHanlder,
+		storePeepID: peepIdHandler,
 	};
 
 	return (
