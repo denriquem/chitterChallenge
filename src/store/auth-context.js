@@ -7,14 +7,18 @@ const AuthContext = React.createContext({
 	login: (token) => {},
 	logout: () => {},
 	storePeepID: (peepID) => {},
+	storeUserID: (userID) => {},
 });
 
 export const AuthContextProvider = (props) => {
 	const initialToken = localStorage.getItem("token");
 	const initialPeepID = localStorage.getItem("peepID");
+	const initialUserID = localStorage.getItem("userID");
 
 	const [token, setToken] = useState(initialToken);
 	const [peepID, setPeepID] = useState(initialPeepID);
+	const [userID, setUserID] = useState(initialUserID);
+
 	const [loggedIn, setLoggedIn] = useState(false);
 
 	const userIsLoggedIn = !!token;
@@ -36,6 +40,13 @@ export const AuthContextProvider = (props) => {
 		localStorage.setItem("peepID", peepID);
 
 		setPeepID(peepID);
+	};
+
+	const userIdHandler = (userID) => {
+		console.log("hello from userID Handler");
+		console.log(userID);
+		localStorage.setItem("userID", userID);
+		setUserID(userID);
 	};
 
 	const contextValue = {

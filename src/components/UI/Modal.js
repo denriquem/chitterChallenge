@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import ReactDom from "react-dom";
 
 const Backdrop = (props) => {
-	return <div className={classes.modal}>{props.children}</div>;
+	return <div className={classes.backdrop}>{props.children}</div>;
 };
 
 const ModalOverlay = (props) => {
