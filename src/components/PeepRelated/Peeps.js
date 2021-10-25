@@ -13,9 +13,7 @@ const Peeps = (props) => {
 				const response = await axios.get(
 					"https://chitter-backend-api-v2.herokuapp.com/peeps"
 				);
-				console.log("hello there");
 				let loadedPeeps = response.data;
-				console.log(loadedPeeps);
 
 				let flattened = loadedPeeps.map((peep) => {
 					return {
@@ -25,9 +23,6 @@ const Peeps = (props) => {
 						userID: peep.user.id,
 					};
 				});
-
-				console.log(flattened);
-
 				setPeeps(flattened);
 			} catch (error) {
 				console.log(error);
@@ -48,8 +43,6 @@ const Peeps = (props) => {
 			/>
 		);
 	});
-
-	console.log(peepList);
 
 	return (
 		<section className={classes.peeps}>

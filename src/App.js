@@ -13,6 +13,8 @@ function App() {
 	const authCtx = useContext(AuthContext);
 
 	console.log(authCtx.isLoggedIn);
+	console.log(authCtx.token);
+	console.log(authCtx.userID);
 
 	const [addPeepIsShown, setAddPeepIsShown] = useState(false);
 
