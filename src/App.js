@@ -14,21 +14,19 @@ function App() {
 	console.log(authCtx.userID);
 
 	return (
-		<AuthContextProvider>
-			<Router>
-				<Switch>
-					<Route path="/" exact>
-						<MainPage />
-					</Route>
-					<Route path="/auth">
-						<AuthForm />
-					</Route>
-					<Route exact path="/peep/:id">
-						<Peep />
-					</Route>
-				</Switch>
-			</Router>
-		</AuthContextProvider>
+		<Router>
+			<Switch>
+				<Route path="/" exact>
+					<MainPage />
+				</Route>
+				<Route path="/auth">
+					<AuthForm />
+				</Route>
+				<Route exact path="/peep/:id">
+					<Peep />
+				</Route>
+			</Switch>
+		</Router>
 	);
 }
 

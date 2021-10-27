@@ -12,7 +12,7 @@ const Header = () => {
 		console.log("logout click handle");
 		authCtx.logout();
 		setRedirect(true);
-		console.log(redirect);
+		console.log(authCtx.isLoggedIn);
 	};
 
 	if (redirect) {
