@@ -7,7 +7,7 @@
 	background-color: #06768a;
 	color: white;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
 	padding: 0 10%;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -26,4 +26,8 @@
 	width: 110%;
 	height: 100%;
 	object-fit: cover;
+}
+
+.logout {
+	text-align: right;
 }
