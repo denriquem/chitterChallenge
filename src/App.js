@@ -1,13 +1,10 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Fragment, useContext, useState } from "react";
-import Header from "./components/UI/Header";
-import ChitterSummary from "./components/PeepRelated/ChitterSummary";
-import Peeps from "./components/PeepRelated/Peeps";
+import { useContext } from "react";
 import Peep from "./components/PeepRelated/Peep";
-import AddPeep from "./components/PeepRelated/AddPeep";
 import AuthForm from "./components/Auth/AuthForm";
 import AuthContext, { AuthContextProvider } from "./store/auth-context";
+import MainPage from "./pages/MainPage";
 
 function App() {
 	const authCtx = useContext(AuthContext);
@@ -16,29 +13,13 @@ function App() {
 	console.log(authCtx.token);
 	console.log(authCtx.userID);
 
-	const [addPeepIsShown, setAddPeepIsShown] = useState(false);
-
-	const showAddPeepHandler = () => {
-		setAddPeepIsShown(true);
-	};
-
-	const hideAddPeepHandler = () => {
-		setAddPeepIsShown(false);
-	};
-
 	return (
 		<AuthContextProvider>
 			<Router>
 				<Switch>
 					<Route path="/" exact>
-						<Fragment>
-							<Header />
-							{addPeepIsShown && <AddPeep onClose={hideAddPeepHandler} />}
-							<ChitterSummary />
-							<Peeps onShowAddPeep={showAddPeepHandler} />
-						</Fragment>
+						<MainPage />
 					</Route>
-
 					<Route path="/auth">
 						<AuthForm />
 					</Route>
