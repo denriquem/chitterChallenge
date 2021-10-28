@@ -6,14 +6,13 @@ import axios from "axios";
 
 const PeepItem = (props) => {
 	const authCtx = useContext(AuthContext);
+	const samePeep = props.samePeep;
 
 	const [redirect, setRedirect] = useState(false);
 
 	const clickPeepHandler = (peepID, e) => {
 		e.preventDefault();
-
 		authCtx.storePeepID(peepID);
-
 		setRedirect(true);
 	};
 
@@ -34,7 +33,7 @@ const PeepItem = (props) => {
 				<button onClick={(e) => clickPeepHandler(props.id, e)}>
 					View Peep
 				</button>
-				<button onClick={deletePeepHandler}>Delete Peep</button>
+				{samePeep && <button onClick={deletePeepHandler}>Delete Peep</button>}
 			</div>
 		</li>
 	);

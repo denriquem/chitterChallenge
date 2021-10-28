@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import classes from "./Peeps.module.css";
 import PeepItem from "./PeepItem";
 import Card from "../UI/Card";
+import AuthContext from "../../store/auth-context";
 
 const Peeps = (props) => {
+	const authCtx = useContext(AuthContext);
 	const [peeps, setPeeps] = useState([]);
 
 	const fetchPeeps = async () => {
@@ -19,7 +21,7 @@ const Peeps = (props) => {
 					id: peep.id,
 					body: peep.body,
 					userHandle: peep.user.handle,
-					userID: peep.user.id,
+					userID: peep.user.id.toString(),
 				};
 			});
 			setPeeps(flattened);
@@ -56,6 +58,11 @@ const Peeps = (props) => {
 	};
 
 	const peepList = peeps.map((peep) => {
+		let samePeep = false;
+		if (peep.userID.toString() === authCtx.userID) {
+			samePeep = true;
+		}
+
 		return (
 			<PeepItem
 				id={peep.id}
@@ -63,7 +70,9 @@ const Peeps = (props) => {
 				body={peep.body}
 				author={peep.userHandle}
 				likes={peep.likes}
+				userID={peep.userID}
 				onDeletePeep={deletePeepHandler}
+				samePeep={samePeep}
 			/>
 		);
 	});
