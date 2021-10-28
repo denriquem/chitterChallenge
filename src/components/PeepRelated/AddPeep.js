@@ -7,8 +7,6 @@ import axios from "axios";
 const AddPeep = (props) => {
 	const submitPeepHandler = async (formData, contextData) => {
 		try {
-			console.log(formData);
-			console.log(contextData);
 			let postRequestData = {
 				peep: {
 					user_id: contextData.userID,
