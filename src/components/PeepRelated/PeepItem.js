@@ -17,24 +17,8 @@ const PeepItem = (props) => {
 		setRedirect(true);
 	};
 
-	const deletePeepHandler = async () => {
-		console.log("delete peep handler");
-
-		try {
-			const config = {
-				headers: {
-					Authorization: `Token token=${authCtx.token}`,
-				},
-			};
-
-			let response = await axios.delete(
-				`https://chitter-backend-api-v2.herokuapp.com/peeps/${props.id}`,
-				config
-			);
-			console.log(response);
-		} catch (err) {
-			console.log(err);
-		}
+	const deletePeepHandler = () => {
+		props.onDeletePeep(props.id, authCtx.token);
 	};
 
 	if (redirect) {
