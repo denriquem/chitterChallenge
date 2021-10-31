@@ -36,16 +36,26 @@ const PeepItem = (props) => {
 				<h3>{props.body}</h3>
 				<h4>{props.author}</h4>
 				<h4>Likes: {props.likes}</h4>
-				<button onClick={(e) => clickPeepHandler(props.id, e)}>
-					View Peep
+				<button
+					className={classes.buttonPosition}
+					onClick={(e) => clickPeepHandler(props.id, e)}
+				>
+					View
 				</button>
 				<button
 					onClick={(e) => likeButtonHandler(props.id, e)}
-					className="likeBtn"
+					className={classes.buttonPosition}
 				>
 					Like
 				</button>
-				{samePeep && <button onClick={deletePeepHandler}>Delete Peep</button>}
+				{samePeep && (
+					<button
+						className={classes.buttonPosition}
+						onClick={deletePeepHandler}
+					>
+						Delete Peep
+					</button>
+				)}
 			</div>
 		</li>
 	);

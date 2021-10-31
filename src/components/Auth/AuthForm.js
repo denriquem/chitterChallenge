@@ -5,7 +5,7 @@ import axios from "axios";
 import AuthContext from "../../store/auth-context";
 
 const AuthForm = () => {
-	const emailInputRef = useRef();
+	const handleInputRef = useRef();
 	const passwordInputRef = useRef();
 
 	const [isLogin, setIsLogin] = useState(false);
@@ -20,18 +20,18 @@ const AuthForm = () => {
 	const submitHandler = (event) => {
 		event.preventDefault();
 
-		const enteredEmail = emailInputRef.current.value;
+		const enteredHandle = handleInputRef.current.value;
 		const enteredPassword = passwordInputRef.current.value;
 
 		let url;
 		let data;
 
 		if (isLogin) {
-			console.log(enteredEmail);
+			console.log(enteredHandle);
 			url = "https://chitter-backend-api-v2.herokuapp.com/sessions";
 			data = {
 				session: {
-					handle: enteredEmail,
+					handle: enteredHandle,
 					password: enteredPassword,
 				},
 			};
@@ -50,11 +50,11 @@ const AuthForm = () => {
 
 			loginRequest();
 		} else {
-			console.log(enteredEmail);
+			console.log(enteredHandle);
 			url = "https://chitter-backend-api-v2.herokuapp.com/users";
 			data = {
 				user: {
-					handle: enteredEmail,
+					handle: enteredHandle,
 					password: enteredPassword,
 				},
 			};
@@ -82,8 +82,8 @@ const AuthForm = () => {
 			<h1>{isLogin ? "Login" : "Sign Up"}</h1>
 			<form onSubmit={submitHandler}>
 				<div className={classes.control}>
-					<label htmlFor="email">Your Handle</label>
-					<input type="email" id="email" required ref={emailInputRef}></input>
+					<label htmlFor="text">Your Handle</label>
+					<input type="text" id="text" required ref={handleInputRef}></input>
 				</div>
 				<div className={classes.control}>
 					<label htmlFor="password">Your Password</label>

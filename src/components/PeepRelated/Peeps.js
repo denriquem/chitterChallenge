@@ -15,7 +15,6 @@ const Peeps = (props) => {
 				"https://chitter-backend-api-v2.herokuapp.com/peeps"
 			);
 			let loadedPeeps = response.data;
-			console.log(loadedPeeps);
 
 			let flattened = loadedPeeps.map((peep) => {
 				return {
@@ -77,6 +76,7 @@ const Peeps = (props) => {
 		try {
 			const response = await axios.put(url, {}, config);
 			console.log(response);
+			fetchPeeps();
 		} catch (err) {
 			console.log(err);
 		}
