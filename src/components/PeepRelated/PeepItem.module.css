@@ -6,6 +6,14 @@
 	border-bottom: 1px solid #ccc;
 }
 
-.poem h3 {
+.peep h3 {
 	margin: 0 0 0.25rem 0;
+}
+
+.likeBtn {
+	height: 38px;
+	padding: 0px;
+	font-size: 11px;
+	background-color: transparent;
+	border-radius: 6px;
 }

@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import classes from "./PeepItem.module.css";
 import AuthContext from "../../store/auth-context";
 import { Redirect } from "react-router-dom";
-import axios from "axios";
 
 const PeepItem = (props) => {
 	const authCtx = useContext(AuthContext);
@@ -20,6 +19,13 @@ const PeepItem = (props) => {
 		props.onDeletePeep(props.id, authCtx.token);
 	};
 
+	const likeButtonHandler = (peepID, e) => {
+		e.preventDefault();
+
+		console.log("Hello hello from like button");
+		props.onLikePeep(peepID, authCtx.token);
+	};
+
 	if (redirect) {
 		return <Redirect to={`peep/${props.id}`} />;
 	}
@@ -32,6 +38,12 @@ const PeepItem = (props) => {
 				<h5>{props.likes}</h5>
 				<button onClick={(e) => clickPeepHandler(props.id, e)}>
 					View Peep
+				</button>
+				<button
+					onClick={(e) => likeButtonHandler(props.id, e)}
+					className="likeBtn"
+				>
+					Like
 				</button>
 				{samePeep && <button onClick={deletePeepHandler}>Delete Peep</button>}
 			</div>
