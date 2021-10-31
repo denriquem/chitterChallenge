@@ -35,7 +35,7 @@ const PeepItem = (props) => {
 			<div>
 				<h3>{props.body}</h3>
 				<h4>{props.author}</h4>
-				<h5>{props.likes}</h5>
+				<h4>Likes: {props.likes}</h4>
 				<button onClick={(e) => clickPeepHandler(props.id, e)}>
 					View Peep
 				</button>

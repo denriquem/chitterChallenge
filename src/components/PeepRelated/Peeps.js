@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, Children } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import classes from "./Peeps.module.css";
 import PeepItem from "./PeepItem";
@@ -15,11 +15,13 @@ const Peeps = (props) => {
 				"https://chitter-backend-api-v2.herokuapp.com/peeps"
 			);
 			let loadedPeeps = response.data;
+			console.log(loadedPeeps);
 
 			let flattened = loadedPeeps.map((peep) => {
 				return {
 					id: peep.id,
 					body: peep.body,
+					likes: peep.likes.length,
 					userHandle: peep.user.handle,
 					userID: peep.user.id.toString(),
 				};
