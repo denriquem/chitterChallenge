@@ -2,32 +2,11 @@ import React from "react";
 import Modal from "../UI/Modal";
 import AddPeepForm from "./AddPeepForm";
 import classes from "./AddPeepForm.module.css";
-import axios from "axios";
+import addPeep from "../../apiCalls/addPeep";
 
 const AddPeep = (props) => {
-	const submitPeepHandler = async (formData, contextData) => {
-		try {
-			let postRequestData = {
-				peep: {
-					user_id: contextData.userID,
-					body: formData.peep,
-				},
-			};
-			const config = {
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Token token=${contextData.token}`,
-				},
-			};
-			const response = await axios.post(
-				"https://chitter-backend-api-v2.herokuapp.com/peeps",
-				postRequestData,
-				config
-			);
-			console.log(response);
-		} catch (err) {
-			console.log(err);
-		}
+	const submitPeepHandler = (formData, contextData) => {
+		addPeep(formData, contextData);
 	};
 
 	const modalActions = (
