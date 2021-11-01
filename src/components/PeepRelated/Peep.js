@@ -7,8 +7,6 @@ import classes from "./Peep.module.css";
 const Peep = () => {
 	const authCtx = useContext(AuthContext);
 
-	console.log(authCtx);
-
 	const postID = authCtx.peepID;
 	const [peep, setPeep] = useState("");
 	const [redirect, setRedirect] = useState(false);
@@ -27,8 +25,6 @@ const Peep = () => {
 				};
 
 				setPeep(newPeepObj);
-				console.log(response.data);
-				console.log(newPeepObj);
 			} catch (err) {
 				console.log(err);
 			}

@@ -22,7 +22,9 @@ const Header = () => {
 	return (
 		<header className={classes.header}>
 			<h1>Chitter</h1>
-			<button onClick={clickHandler}>Logout</button>
+			<button onClick={clickHandler} className={classes.signOutBtn}>
+				<i className="fas fa-sign-out-alt"></i>
+			</button>
 		</header>
 	);
 };

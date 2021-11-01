@@ -8,7 +8,7 @@ import {
 import { useContext } from "react";
 import Peep from "./components/PeepRelated/Peep";
 import AuthForm from "./components/Auth/AuthForm";
-import AuthContext, { AuthContextProvider } from "./store/auth-context";
+import AuthContext from "./store/auth-context";
 import MainPage from "./pages/MainPage";
 
 function App() {
