@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect,
+} from "react-router-dom";
 import { useContext } from "react";
 import Peep from "./components/PeepRelated/Peep";
 import AuthForm from "./components/Auth/AuthForm";
@@ -17,13 +22,15 @@ function App() {
 		<Router>
 			<Switch>
 				<Route path="/" exact>
-					<MainPage />
+					{authCtx.isLoggedIn && <MainPage />}
+					{!authCtx.isLoggedIn && <Redirect to="/auth" />}
 				</Route>
 				<Route path="/auth">
 					<AuthForm />
 				</Route>
 				<Route exact path="/peep/:id">
-					<Peep />
+					{authCtx.isLoggedIn && <Peep />}
+					{!authCtx.isLoggedIn && <Redirect to="/auth" />}
 				</Route>
 			</Switch>
 		</Router>
