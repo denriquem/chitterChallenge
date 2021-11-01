@@ -21,6 +21,7 @@ const Peeps = (props) => {
 					id: peep.id,
 					body: peep.body,
 					likes: peep.likes.length,
+					likesAllInfo: peep.likes,
 					userHandle: peep.user.handle,
 					userID: peep.user.id.toString(),
 				};
@@ -36,10 +37,6 @@ const Peeps = (props) => {
 	}, []);
 
 	const deletePeepHandler = async (peepId, token) => {
-		console.log("deleting Peep from the big Peep");
-		console.log(peepId);
-		console.log(token);
-
 		try {
 			const config = {
 				headers: {
@@ -60,9 +57,6 @@ const Peeps = (props) => {
 
 	const likePeepHandler = async (peepID, token) => {
 		let userID = authCtx.userID;
-		console.log("like peep handler from peeps");
-		console.log(`userIDis: ${userID}`);
-		console.log(token);
 
 		const config = {
 			headers: {
@@ -83,9 +77,22 @@ const Peeps = (props) => {
 	};
 
 	const peepList = peeps.map((peep) => {
-		let samePeep = false;
+		let samePeepAsPoster = false;
+		let likedBySameUser = false;
+
 		if (peep.userID.toString() === authCtx.userID) {
-			samePeep = true;
+			samePeepAsPoster = true;
+		}
+
+		let container = [];
+		peep.likesAllInfo.forEach((like) => {
+			if (like.user.id.toString() === authCtx.userID) {
+				container.push(1);
+			}
+		});
+
+		if (container.length >= 1) {
+			likedBySameUser = true;
 		}
 
 		return (
@@ -98,7 +105,8 @@ const Peeps = (props) => {
 				userID={peep.userID}
 				onDeletePeep={deletePeepHandler}
 				onLikePeep={likePeepHandler}
-				samePeep={samePeep}
+				samePeep={samePeepAsPoster}
+				likedBySameUser={likedBySameUser}
 			/>
 		);
 	});

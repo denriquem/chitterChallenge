@@ -6,6 +6,7 @@ import { Redirect } from "react-router-dom";
 const PeepItem = (props) => {
 	const authCtx = useContext(AuthContext);
 	const samePeep = props.samePeep;
+	const likedBySameUser = props.likedBySameUser;
 
 	const [redirect, setRedirect] = useState(false);
 
@@ -42,12 +43,14 @@ const PeepItem = (props) => {
 				>
 					<i class="fas fa-eye"></i>
 				</button>
-				<button
-					onClick={(e) => likeButtonHandler(props.id, e)}
-					className={classes.likeBtn}
-				>
-					<i class="far fa-heart"></i>
-				</button>
+				{!likedBySameUser && (
+					<button
+						onClick={(e) => likeButtonHandler(props.id, e)}
+						className={classes.likeBtn}
+					>
+						<i class="far fa-heart"></i>
+					</button>
+				)}
 
 				{samePeep && (
 					<button className={classes.deleteBtn} onClick={deletePeepHandler}>
