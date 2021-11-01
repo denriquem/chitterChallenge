@@ -4,7 +4,8 @@ import classes from "./Peeps.module.css";
 import PeepItem from "./PeepItem";
 import Card from "../UI/Card";
 import AuthContext from "../../store/auth-context";
-import fetchPeeps from "../apiCalls/fetchPeeps";
+import fetchPeeps from "../../apiCalls/fetchPeeps";
+import deletePeep from "../../apiCalls/deletePeep";
 
 const Peeps = (props) => {
 	const authCtx = useContext(AuthContext);
@@ -15,22 +16,7 @@ const Peeps = (props) => {
 	}, []);
 
 	const deletePeepHandler = async (peepId, token) => {
-		try {
-			const config = {
-				headers: {
-					Authorization: `Token token=${token}`,
-				},
-			};
-
-			let response = await axios.delete(
-				`https://chitter-backend-api-v2.herokuapp.com/peeps/${peepId}`,
-				config
-			);
-			console.log(response);
-			fetchPeeps();
-		} catch (err) {
-			console.log(err);
-		}
+		deletePeep(peepId, token, setPeeps);
 	};
 
 	const likePeepHandler = async (peepID, token) => {
