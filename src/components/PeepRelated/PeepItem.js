@@ -41,20 +41,20 @@ const PeepItem = (props) => {
 					className={classes.viewButton}
 					onClick={(e) => clickPeepHandler(props.id, e)}
 				>
-					<i class="fas fa-eye"></i>
+					<i className="fas fa-eye"></i>
 				</button>
 				{!likedBySameUser && (
 					<button
 						onClick={(e) => likeButtonHandler(props.id, e)}
 						className={classes.likeBtn}
 					>
-						<i class="far fa-heart"></i>
+						<i className="far fa-heart"></i>
 					</button>
 				)}
 
 				{samePeep && (
 					<button className={classes.deleteBtn} onClick={deletePeepHandler}>
-						<i class="far fa-trash-alt"></i>
+						<i className="far fa-trash-alt"></i>
 					</button>
 				)}
 			</div>

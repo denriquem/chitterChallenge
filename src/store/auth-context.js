@@ -26,10 +26,9 @@ export const AuthContextProvider = (props) => {
 	const logOutHandler = useCallback(() => {
 		setToken(null);
 		setUserID(null);
-		console.log("hello?");
+
 		localStorage.removeItem("token");
 		localStorage.removeItem("userID");
-		console.log(localStorage);
 	}, []);
 
 	const logInHandler = (token, userID) => {
@@ -41,8 +40,6 @@ export const AuthContextProvider = (props) => {
 	};
 
 	const peepIdHandler = (peepID) => {
-		console.log("hello from the peep handler, on second thoughts...");
-		console.log(peepID);
 		localStorage.setItem("peepID", peepID);
 
 		setPeepID(peepID);
