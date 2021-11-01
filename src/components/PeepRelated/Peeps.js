@@ -4,36 +4,14 @@ import classes from "./Peeps.module.css";
 import PeepItem from "./PeepItem";
 import Card from "../UI/Card";
 import AuthContext from "../../store/auth-context";
+import fetchPeeps from "../apiCalls/fetchPeeps";
 
 const Peeps = (props) => {
 	const authCtx = useContext(AuthContext);
 	const [peeps, setPeeps] = useState([]);
 
-	const fetchPeeps = async () => {
-		try {
-			const response = await axios.get(
-				"https://chitter-backend-api-v2.herokuapp.com/peeps"
-			);
-			let loadedPeeps = response.data;
-
-			let flattened = loadedPeeps.map((peep) => {
-				return {
-					id: peep.id,
-					body: peep.body,
-					likes: peep.likes.length,
-					likesAllInfo: peep.likes,
-					userHandle: peep.user.handle,
-					userID: peep.user.id.toString(),
-				};
-			});
-			setPeeps(flattened);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
 	useEffect(() => {
-		fetchPeeps();
+		fetchPeeps(setPeeps);
 	}, []);
 
 	const deletePeepHandler = async (peepId, token) => {
