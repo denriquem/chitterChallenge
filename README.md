@@ -47,4 +47,4 @@ I would like to be able to a delete a peep I have made
 ```
 ## Component Flow
 
-(https://user-images.githubusercontent.com/11481274/139904998-40951df2-509b-4362-8fab-9d4baf78de76.png)
+![Components](https://user-images.githubusercontent.com/11481274/139904998-40951df2-509b-4362-8fab-9d4baf78de76.png)
