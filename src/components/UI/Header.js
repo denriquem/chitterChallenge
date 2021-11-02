@@ -9,10 +9,8 @@ const Header = () => {
 	const [redirect, setRedirect] = useState(false);
 
 	const clickHandler = () => {
-		console.log("logout click handle");
 		authCtx.logout();
 		setRedirect(true);
-		console.log(authCtx.isLoggedIn);
 	};
 
 	if (redirect) {

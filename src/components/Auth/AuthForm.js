@@ -50,7 +50,6 @@ const AuthForm = () => {
 
 			loginRequest();
 		} else {
-			console.log(enteredHandle);
 			url = "https://chitter-backend-api-v2.herokuapp.com/users";
 			data = {
 				user: {

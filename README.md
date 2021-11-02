@@ -44,7 +44,16 @@ As a user,
 so that i can spare my blushes,
 I would like to be able to a delete a peep I have made
 
+As a user,
+so that i cannot be overly generous,
+I would like the like button to dissapear once I have already like a post
+
+As a user,
+so that I cannot upset people,
+I would like to only be able to delete my own posts
+
 ```
+
 ## Component Flow
 
 ![Components](https://user-images.githubusercontent.com/11481274/139904998-40951df2-509b-4362-8fab-9d4baf78de76.png)

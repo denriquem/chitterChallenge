@@ -14,10 +14,6 @@ import MainPage from "./pages/MainPage";
 function App() {
 	const authCtx = useContext(AuthContext);
 
-	console.log(authCtx.isLoggedIn);
-	console.log(authCtx.token);
-	console.log(authCtx.userID);
-
 	return (
 		<Router>
 			<Switch>

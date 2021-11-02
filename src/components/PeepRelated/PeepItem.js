@@ -22,8 +22,6 @@ const PeepItem = (props) => {
 
 	const likeButtonHandler = (peepID, e) => {
 		e.preventDefault();
-
-		console.log("Hello hello from like button");
 		props.onLikePeep(peepID, authCtx.token);
 	};
 

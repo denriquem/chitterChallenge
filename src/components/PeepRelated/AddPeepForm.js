@@ -15,7 +15,6 @@ const AddPeepForm = (props) => {
 		const formData = {
 			peep: enteredPeep,
 		};
-		console.log(formData);
 		props.onConfirm(formData, authCtx);
 	};
 

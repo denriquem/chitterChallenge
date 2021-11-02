@@ -24,8 +24,6 @@ const Peeps = (props) => {
 		likePeep(peepID, token, setPeeps, userID);
 	};
 
-	console.log(peeps);
-
 	const peepList = peeps.map((peep) => {
 		let samePeepAsPoster = false;
 		let likedBySameUser = false;
@@ -36,12 +34,10 @@ const Peeps = (props) => {
 
 		let container = [];
 		peep.likesAllInfo.forEach((like) => {
-			console.log(`typoe of auth user id:: ${typeof authCtx.userID}`);
 			if (like.user.id.toString() === authCtx.userID) {
 				container.push(1);
 			}
 		});
-		// console.log(container);
 
 		if (container.length >= 1) {
 			likedBySameUser = true;
@@ -65,8 +61,8 @@ const Peeps = (props) => {
 
 	return (
 		<section className={classes.peeps}>
-			<button className={classes.buttonPosition} onClick={props.onShowAddPeep}>
-				Add Peep
+			<button className={classes.plusButton} onClick={props.onShowAddPeep}>
+				<i className="fas fa-plus-circle"></i>
 			</button>
 			<Card>
 				<ul>{peepList}</ul>
