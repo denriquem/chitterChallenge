@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import AuthContext from "../../store/auth-context";
+import getPeep from "../../apiCalls/getPeep";
 import classes from "./Peep.module.css";
 
 const Peep = () => {
@@ -12,25 +13,7 @@ const Peep = () => {
 	const [redirect, setRedirect] = useState(false);
 
 	useEffect(() => {
-		const getPeep = async (postID) => {
-			try {
-				let response = await axios.get(
-					`https://chitter-backend-api-v2.herokuapp.com/peeps/${postID}`
-				);
-
-				let newPeepObj = {
-					body: response.data.body,
-					handle: response.data.user.handle,
-					likes: response.data.likes.length,
-				};
-
-				setPeep(newPeepObj);
-			} catch (err) {
-				console.log(err);
-			}
-		};
-
-		getPeep(postID);
+		getPeep(postID, setPeep);
 	}, []);
 
 	const clickBackHandler = () => {
