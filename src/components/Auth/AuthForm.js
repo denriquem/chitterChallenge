@@ -27,7 +27,6 @@ const AuthForm = () => {
 		let data;
 
 		if (isLogin) {
-			console.log(enteredHandle);
 			url = "https://chitter-backend-api-v2.herokuapp.com/sessions";
 			data = {
 				session: {
@@ -39,10 +38,11 @@ const AuthForm = () => {
 			const loginRequest = async () => {
 				try {
 					const response = await axios.post(url, data);
-					console.log(response.data);
-					authCtx.login(response.data.session_key, response.data.user_id);
+					authCtx.login(
+						response.data.session_key,
+						response.data.user_id.toString()
+					);
 					setUserIsLoggedIn(true);
-					console.log(authCtx.isLoggedIn);
 				} catch (err) {
 					console.log(err);
 				}
