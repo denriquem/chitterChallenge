@@ -23,7 +23,7 @@ Here are some interactions the API supports. Implement as many as you see fit.
 
 ## How to run the app
 
-- whilst in the chitter-challenge folder, run `npm start`
+- whilst in the chitterChallenge folder, run `npm start`
 
 ## User Stories
 
