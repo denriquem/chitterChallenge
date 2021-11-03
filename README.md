@@ -18,7 +18,7 @@ Here are some interactions the API supports. Implement as many as you see fit.
 ## Getting Started
 
 - Clone this repository with `git clone https://github.com/denriquem/chitterChallenge.git`
-- Change into the chitter challenge folder with `cd chitter-challenge`
+- Change into the chitter challenge folder with `cd chitterChallenge`
 - install the dependencies with `npm install`
 
 ## How to run the app
